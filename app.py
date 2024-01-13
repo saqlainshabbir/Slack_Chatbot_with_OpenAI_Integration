@@ -8,8 +8,8 @@ from flask_ngrok import run_with_ngrok
 app = Flask(__name__)
 run_with_ngrok(app)  # Use ngrok for local testing
 
-slack_client = WebClient(token='xoxb-6409820116198-6402567529575-WkBMRy0D6XF7GX4HAxANaJaa')
-SLACK_VERIFICATION_TOKEN = 'gnj9eh0DGTywu2u2YonDPCwu'
+slack_client = WebClient(token='Your_Slack_Autho_Token')
+SLACK_VERIFICATION_TOKEN = 'YOUR_SLACK_VERIFICATION_TOKEN'
 
 load_dotenv()
 client = OpenAI()
@@ -38,7 +38,7 @@ def slack_events():
     return jsonify({'Message': 'Hello from World!'})
 
 def process_message(message):
-    assistant_id = "asst_JTCSfhHOOtm0DgMEZTTWxsX8"
+    assistant_id = "Your_Assistant_ID"
 
     # Create thread, message, and run the assistant
     thread = client.beta.threads.create()
@@ -67,7 +67,6 @@ def process_message(message):
         if message.role == "assistant":
             myresponse = message.content[0].text.value
             break
-    print("I am after message creation")
     return myresponse
 
 if __name__ == '__main__':
